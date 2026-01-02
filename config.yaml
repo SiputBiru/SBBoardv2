@@ -266,15 +266,15 @@ pcbs:
           orientation: up
         where:
           ref: matrix_inner_num
-          shift: [21, -21]   # Match outline shift
+          shift: [21, -4]   
           rotate: -90
 
       # Battery Jack
       jstph:
         what: jstph
         where:
-          ref: matrix_middle_home
-          shift: [-7, 5.5]
+          ref: matrix_inner_num
+          shift: [21, -10.5]
           rotate: 90
         params:
           side: B
@@ -289,14 +289,14 @@ pcbs:
           to: RST
         where:
           ref: matrix_inner_num
-          shift: [-20, 16]
+          shift: [-20, 20]
           rotate: -14
       
       battery_switch:
         what: power_switch_smd_side
         where:
           ref: matrix_inner_num
-          shift: [-10, 13.7]
+          shift: [-10, 17.7]
           rotate: 76
         params:
           side: B
@@ -317,38 +317,38 @@ pcbs:
 
       default_diode:
         what: diode
-        where: /^(matrix_(?!(?:outer_|ring_|index_|pinky_))|thumbs_).*/
+        where: /^(matrix_|thumbs_).*/
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [7.8, -3.0]
-          rotate: 90
-      weird_diode:
-        what: diode
-        where: /^(matrix_(?:outer_|ring_|index_(?!(?:top))|pinky_)).*/
-        params:
-          from: "{{colrow}}"
-          to: "{{row_net}}"
-        adjust:
-          shift: [0, 6.0]
-          rotate: -180
-      martixindextop:
-        what: diode
-        where: /^(matrix_index_(?:top)).*/
-        params:
-          from: "{{colrow}}"
-          to: "{{row_net}}"
-        adjust:
-          shift: [7.68, -3.0]
-          rotate: 90
+          shift: [0.8, -10.0]
+          rotate: 180
+      # weird_diode:
+      #   what: diode
+      #   where: /^(matrix_(?:outer_|ring_|index_(?!(?:top))|pinky_)).*/
+      #   params:
+      #     from: "{{colrow}}"
+      #     to: "{{row_net}}"
+      #   adjust:
+      #     shift: [0, 6.0]
+      #     rotate: -180
+      # martixindextop:
+      #   what: diode
+      #   where: /^(matrix_index_(?:top)).*/
+      #   params:
+      #     from: "{{colrow}}"
+      #     to: "{{row_net}}"
+      #   adjust:
+      #     shift: [7.68, -3.0]
+      #     rotate: 90
       front_text: &text
         what: text
         where: &textWhere
             ref: matrix_middle_mod
             shift: [-26.7, -17.5]
         params: &textParams
-            text: SBBoardv1
+            text: SBBoardv2
             justify: left
             h_size: 3.0
             v_size: 3.0
@@ -374,15 +374,15 @@ pcbs:
           orientation: up
         where:
           ref: mirror_matrix_inner_num
-          shift: [21, -21]   # Match outline shift
+          shift: [21, -4]   
           rotate: -90
 
       # Battery Jack
       jstph:
         what: jstph
         where:
-          ref: mirror_matrix_middle_home
-          shift: [-7, 5.5]
+          ref: mirror_matrix_inner_num
+          shift: [21, -10.5]
           rotate: 90
         params:
           side: B
@@ -397,7 +397,7 @@ pcbs:
           to: RST
         where:
           ref: mirror_matrix_inner_num
-          shift: [-20, 16]
+          shift: [-20, 20]
           rotate: -14.0
 
       
@@ -406,7 +406,7 @@ pcbs:
         what: power_switch_smd_side
         where:
           ref: mirror_matrix_inner_num
-          shift: [-10, 13.7]
+          shift: [-10, 17.7]
           rotate: -104
         params:
           side: B
@@ -421,22 +421,23 @@ pcbs:
 
       default_diode:
         what: diode
-        where: /^(mirror_matrix_(?!(?:ring_|outer_|pinky_))|mirror_thumbs_).*/
+        where: /^(mirror_matrix_|mirror_thumbs_).*/
         params:
           from: "{{colrow}}"
           to: "{{row_net}}"
         adjust:
-          shift: [-7.8, -3.0]
-          rotate: 90
-      weird_diode:
-        what: diode
-        where: /^(mirror_matrix_(?:outer_|ring_|pinky_)).*/
-        params:
-          from: "{{colrow}}"
-          to: "{{row_net}}"
-        adjust:
-          shift: [0, 5.0]
+          shift: [0.8, -9.0]
           rotate: 180
+          # rotate: 90
+      # weird_diode:
+      #   what: diode
+      #   where: /^(mirror_matrix_(?:outer_|ring_|pinky_)).*/
+      #   params:
+      #     from: "{{colrow}}"
+      #     to: "{{row_net}}"
+      #   adjust:
+      #     shift: [0, 5.0]
+      #     rotate: 180
       front_text: &text
         what: text
         where: &textWhere
