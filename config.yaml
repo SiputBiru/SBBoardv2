@@ -289,14 +289,14 @@ pcbs:
           to: RST
         where:
           ref: matrix_inner_num
-          shift: [-20, 20]
+          shift: [-10, 17.5]
           rotate: -14
       
       battery_switch:
         what: power_switch_smd_side
         where:
           ref: matrix_inner_num
-          shift: [-10, 17.7]
+          shift: [0, 15.2]
           rotate: 76
         params:
           side: B
@@ -375,7 +375,7 @@ pcbs:
         where:
           ref: mirror_matrix_inner_num
           shift: [21, -4]   
-          rotate: -90
+          rotate: 90
 
       # Battery Jack
       jstph:
@@ -397,7 +397,7 @@ pcbs:
           to: RST
         where:
           ref: mirror_matrix_inner_num
-          shift: [-20, 20]
+          shift: [-10, 17.5]
           rotate: -14.0
 
       
@@ -406,7 +406,7 @@ pcbs:
         what: power_switch_smd_side
         where:
           ref: mirror_matrix_inner_num
-          shift: [-10, 17.7]
+          shift: [0, 15.2]
           rotate: -104
         params:
           side: B
