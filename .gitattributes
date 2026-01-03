@@ -3,3 +3,4 @@
 *.kicad_prl filter=lfs diff=lfs merge=lfs -text
 *.kicad_pro filter=lfs diff=lfs merge=lfs -text
 *fp-info-cache filter=lfs diff=lfs merge=lfs -text
+fp-info-cache filter=lfs diff=lfs merge=lfs -text
