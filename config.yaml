@@ -90,7 +90,6 @@ points:
     distance: 5kx
 
 outlines:
-  
   raw:
     - what: rectangle
       where: true
@@ -132,8 +131,8 @@ outlines:
     - what: rectangle
       where:
         ref: mirror_matrix_inner_num
-        shift: [21, -21]      # Moved UP by ~21mm
-        rotate: -90         # Rotated Horizontal
+        shift: [21, -21] # Moved UP by ~21mm
+        rotate: -90 # Rotated Horizontal
       size: [65, 18]
       expand: 3
 
@@ -167,9 +166,9 @@ outlines:
     - what: rectangle
       where:
         ref: matrix_inner_num
-        shift: [21, -21]      # Moved UP by ~21mm
-        rotate: -90         # Rotated Horizontal
-      size: [65, 18]        # Swapped width/height to be horizontal
+        shift: [21, -21] # Moved UP by ~21mm
+        rotate: -90 # Rotated Horizontal
+      size: [65, 18] # Swapped width/height to be horizontal
       expand: 3
 
   board:
@@ -234,7 +233,7 @@ outlines:
       fillet: 0
   plate_left:
     - name: leftboard
-      expand: 3        
+      expand: 3
     - name: plate_hole
       operation: subtract
   plate_right:
@@ -250,12 +249,27 @@ pcbs:
         outline: leftboard
     footprints:
       choc_hotswap:
-        # CHANGED: Switched to MX Hybrid footprint
-        what: hybrid
+        what: switch_choc_v1_v2
         where: /^(matrix_|thumbs_).*/
         params:
-          P1: "{{colrow}}"
-          P2: "{{column_net}}"
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+          hotswap: true
+          reversible: true
+          include_traces_vias: true
+          include_keycap: false
+        adjust:
+          rotate: 0
+
+      mx_hotswap:
+        what: switch_mx
+        where: /^(matrix_|thumbs_).*/
+        params:
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+          hotswap: true
+          reversible: true
+          include_traces_vias: true
         adjust:
           rotate: 180
 
@@ -266,7 +280,7 @@ pcbs:
           orientation: up
         where:
           ref: matrix_inner_num
-          shift: [21, -4]   
+          shift: [21, -4]
           rotate: -90
 
       # Battery Jack
@@ -291,7 +305,7 @@ pcbs:
           ref: matrix_inner_num
           shift: [-10, 17.5]
           rotate: -14
-      
+
       battery_switch:
         what: power_switch_smd_side
         where:
@@ -302,7 +316,7 @@ pcbs:
           side: B
           from: pos
           to: RAW
-       
+
       hole_center:
         what: mountinghole
         where:
@@ -345,14 +359,14 @@ pcbs:
       front_text: &text
         what: text
         where: &textWhere
-            ref: matrix_middle_mod
-            shift: [-26.7, -17.5]
+          ref: matrix_middle_mod
+          shift: [-26.7, -17.5]
         params: &textParams
-            text: SBBoardv2
-            justify: left
-            h_size: 3.0
-            v_size: 3.0
-            thickness: 0.4
+          text: SBBoardv2
+          justify: left
+          h_size: 3.0
+          v_size: 3.0
+          thickness: 0.4
 
   right:
     outlines:
@@ -360,13 +374,30 @@ pcbs:
         outline: rightboard
     footprints:
       choc_hotswap:
-        what: hybrid
+        what: switch_choc_v1_v2
         where: /^(mirror_matrix_|mirror_thumbs_).*/
         params:
-          P1: "{{colrow}}"
-          P2: "{{column_net}}"
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+          hotswap: true
+          reversible: true
+          include_traces_vias: true
+          include_keycap: false
+        adjust:
+          rotate: 0
+
+      mx_hotswap:
+        what: switch_mx
+        where: /^(mirror_matrix_|mirror_thumbs_).*/
+        params:
+          from: "{{colrow}}"
+          to: "{{column_net}}"
+          hotswap: true
+          reversible: true
+          include_traces_vias: true
         adjust:
           rotate: 180
+
       # Micro Controller
       nice_nano:
         what: nice_nano
@@ -374,7 +405,7 @@ pcbs:
           orientation: up
         where:
           ref: mirror_matrix_inner_num
-          shift: [21, -4]   
+          shift: [21, -4]
           rotate: 90
 
       # Battery Jack
@@ -400,7 +431,6 @@ pcbs:
           shift: [-10, 17.5]
           rotate: -14.0
 
-      
       # Battery on/off switch
       battery_switch_2:
         what: power_switch_smd_side
@@ -412,7 +442,7 @@ pcbs:
           side: B
           from: pos
           to: RAW
-           
+
       hole_center:
         what: mountinghole
         where:
@@ -441,14 +471,14 @@ pcbs:
       front_text: &text
         what: text
         where: &textWhere
-            ref: mirror_matrix_middle_mod
-            shift: [-2.7, -17.5]
+          ref: mirror_matrix_middle_mod
+          shift: [-2.7, -17.5]
         params: &textParams
-            text: SBBoardv2
-            justify: left
-            h_size: 3.0
-            v_size: 3.0
-            thickness: 0.4
+          text: SBBoardv2
+          justify: left
+          h_size: 3.0
+          v_size: 3.0
+          thickness: 0.4
 cases:
   left_plate:
     - name: plate_left
